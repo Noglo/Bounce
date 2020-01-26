@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -12,16 +9,22 @@ public class PlayerManager : MonoBehaviour
     public TextMeshProUGUI orbsLeftIndicator;
     public Transform orbsHolder;
 
-    public int orbsOnLevel;
+    public int OrbsOnLevel;
+    private int orbsOnLevelCount;
+
     void Start()
     {
-        orbsOnLevel = orbsHolder.childCount;
+        OrbsOnLevel = orbsHolder.childCount;
     }
 
     void Update()
     {
-        orbsLeftIndicator.text = "" + orbsOnLevel;
-        if (orbsOnLevel == 0){
+        if(orbsOnLevelCount != OrbsOnLevel)
+        {
+            orbsLeftIndicator.text = OrbsOnLevel.ToString();
+            orbsOnLevelCount = OrbsOnLevel;
+        }
+        if (OrbsOnLevel == 0){
             SceneManager.LoadScene("SampleScene");
         }
     }

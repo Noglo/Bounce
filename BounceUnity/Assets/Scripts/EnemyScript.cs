@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -17,7 +15,7 @@ public class EnemyScript : MonoBehaviour
     private Vector3 pos_1;
     private Vector3 pos_2;
 
-    void Start()
+    private void Start()
     {
         if  (moveDirection == Direction.Vertical){
             pos_1 = transform.position + Vector3.up * dist;
@@ -29,7 +27,7 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         transform.Rotate(Vector3.forward * rotSpeed * Time.deltaTime);
         transform.position = Vector3.Lerp (pos_1, pos_2, Mathf.PingPong(Time.time * speed, 1.0f)); //Непрерывно перемещаеи между 2ух точек.
